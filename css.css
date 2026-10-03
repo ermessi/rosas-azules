@@ -1,0 +1,24 @@
+:root{--bg1:#e9f1ff;--bg2:#b4cbf7;--ink:#16224f;--paper:#f3f6ff;--paper2:#cbd8f4;--stem:#2f6b5a;--ribbon:#16224f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#0c1433;--bg2:#1f3170;--ink:#dbe6ff;--paper:#aab9e6;--paper2:#7d90cf;--stem:#4c9a82;--ribbon:#dbe6ff}}
+:root[data-theme="dark"]{--bg1:#0c1433;--bg2:#1f3170;--ink:#dbe6ff;--paper:#aab9e6;--paper2:#7d90cf;--stem:#4c9a82;--ribbon:#dbe6ff}
+html,body{height:100%;margin:0}
+body{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--ink);font-family:"Iowan Old Style",Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1rem;box-sizing:border-box;text-align:center}
+h1{font-weight:400;font-size:clamp(1.8rem,6vw,2.8rem);margin:0;letter-spacing:.01em}
+p{margin:0;opacity:.75}
+svg{width:min(92vw,560px);max-height:68vh;overflow:visible}
+.sway{transform-box:view-box;transform-origin:300px 470px;animation:sway 5s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.3deg)}to{transform:rotate(1.3deg)}}
+.head{transform-box:fill-box;transform-origin:center;transition:transform .5s cubic-bezier(.3,1.4,.5,1);cursor:pointer}
+.head:hover{transform:scale(1.1)}
+.head.turn{transform:rotate(70deg) scale(1.12)}
+button{font:inherit;color:var(--bg1);background:var(--ink);border:0;border-radius:999px;padding:.6rem 1.4rem;cursor:pointer}
+button:focus-visible{outline:3px solid #5b8def;outline-offset:3px}
+.stem{stroke-dasharray:1;stroke-dashoffset:1;animation:grow .8s ease-out forwards;animation-delay:var(--d)}
+.leaf{animation:fade .6s ease-out both;animation-delay:var(--d)}
+.bloom{transform-box:fill-box;transform-origin:center;animation:bloom 1s cubic-bezier(.3,1.4,.5,1) both;animation-delay:var(--d)}
+.paper{animation:rise .9s cubic-bezier(.2,.9,.3,1) both}
+@keyframes grow{to{stroke-dashoffset:0}}
+@keyframes fade{from{opacity:0}to{opacity:.85}}
+@keyframes bloom{from{transform:scale(0) rotate(-120deg);opacity:0}50%{opacity:1}to{transform:scale(1) rotate(0)}}
+@keyframes rise{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sway{animation:none}.head{transition:none}.stem,.leaf,.bloom,.paper{animation:none}.stem{stroke-dashoffset:0}}
